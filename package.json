@@ -1,6 +1,6 @@
 {
   "name": "tachyons-less",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tachyons in less",
   "main": "build.js",
   "scripts": {
