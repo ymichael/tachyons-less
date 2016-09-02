@@ -1,6 +1,6 @@
 # tachyons-less
 
-Tachyons transpiled into less.
+[Tachyons](http://tachyons.io) transpiled into less.
 
 ## Installation
 
@@ -16,4 +16,4 @@ npm install --save tachyons-less
 
 ## Credits
 
-Borrows heavily from https://github.com/tachyons-css/tachyons-sass
+Borrows heavily from [tachyons-sass](https://github.com/tachyons-css/tachyons-sass).
