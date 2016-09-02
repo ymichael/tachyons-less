@@ -37,9 +37,13 @@ function toLess(css) {
             var variableName = line.slice(0, idx);
             var value = line.slice(idx + 1);
             variables += [
-                variableName.replace('--', '@'), ': ', '"', value, '";\n'
+                variableName.replace('--', '@'), ': ', '~"', value, '";\n'
             ].join('');
             atRule.remove();
+        } else if (atRule.name == 'media') {
+            atRule.params = atRule.params.replace(/\(--(.*)\)/, (_, p1) => {
+                return '@' + p1;
+            });
         }
     });
 
