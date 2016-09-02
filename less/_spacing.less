@@ -265,7 +265,7 @@
   margin-right: @spacing-extra-extra-extra-large;
 }
 
-@media (--breakpoint-not-small) {
+@media @breakpoint-not-small {
   .pa0-ns  {  padding: @spacing-none; }
   .pa1-ns {  padding: @spacing-extra-small; }
   .pa2-ns  {  padding: @spacing-small; }
@@ -489,7 +489,7 @@
 
 }
 
-@media (--breakpoint-medium) {
+@media @breakpoint-medium {
   .pa0-m  {  padding: @spacing-none; }
   .pa1-m {  padding: @spacing-extra-small; }
   .pa2-m  {  padding: @spacing-small; }
@@ -714,7 +714,7 @@
 
 }
 
-@media (--breakpoint-large) {
+@media @breakpoint-large {
   .pa0-l  {  padding: @spacing-none; }
   .pa1-l {  padding: @spacing-extra-small; }
   .pa2-l  {  padding: @spacing-small; }
@@ -946,6 +946,6 @@
 @spacing-extra-large: 4rem;
 @spacing-extra-extra-large: 8rem;
 @spacing-extra-extra-extra-large: 16rem;
-@breakpoint-not-small: "screen and (min-width: 48em)";
-@breakpoint-medium: "screen and (min-width: 48em) and (max-width: 64em)";
-@breakpoint-large: "screen and (min-width: 64em)";
+@breakpoint-not-small: ~"screen and (min-width: 48em)";
+@breakpoint-medium: ~"screen and (min-width: 48em) and (max-width: 64em)";
+@breakpoint-large: ~"screen and (min-width: 64em)";
