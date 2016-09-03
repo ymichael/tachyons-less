@@ -1,6 +1,6 @@
 {
   "name": "tachyons-less",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Tachyons in less",
   "main": "build.js",
   "scripts": {
@@ -15,12 +15,10 @@
   ],
   "author": "Michael Yong",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "postcss": "^5.1.2",
     "tachyons": "^4.2.0",
-    "glob": "^7.0.6"
-  },
-  "devDependencies": {
+    "glob": "^7.0.6",
     "expect.js": "^0.3.1",
     "less": "^2.7.1",
     "mocha": "^3.0.2"
