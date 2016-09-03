@@ -29,8 +29,8 @@ function toLess(css) {
         return '@' + p1;
     });
 
-    // Convert @custom-media into variables.
     root.walkAtRules(atRule => {
+        // Convert @custom-media into variables.
         if (atRule.name == 'custom-media') {
             var line = atRule.params;
             var idx = line.indexOf(' ');
@@ -40,10 +40,17 @@ function toLess(css) {
                 variableName.replace('--', '@'), ': ', '~"', value, '";\n'
             ].join('');
             atRule.remove();
-        } else if (atRule.name == 'media') {
+        }
+        // Handle @media variables
+        if (atRule.name == 'media') {
             atRule.params = atRule.params.replace(/\(--(.*)\)/, (_, p1) => {
                 return '@' + p1;
             });
+        }
+
+        // Handle @imports
+        if (atRule.name == 'import') {
+            atRule.params = atRule.params.replace('./', 'less/');
         }
     });
 
@@ -54,8 +61,6 @@ glob('./node_modules/tachyons/src/**/*.css', function(err, files) {
     if (err) {
         throw err;
     }
-    var baseFile = '';
-
     if (!fs.existsSync('less')){
         fs.mkdirSync('less');
     }
@@ -66,12 +71,10 @@ glob('./node_modules/tachyons/src/**/*.css', function(err, files) {
         if (fileName == 'tachyons') {
             return;
         }
-
         fs.writeFileSync('less/' + fileName + '.less', toLess(css));
-        baseFile += '@import "less/' + fileName + '";';
-        baseFile += '\n';
     });
 
-    fs.writeFileSync('tachyons.less', baseFile);
+    // Handle tachyons.css
+    var main = fs.readFileSync('./node_modules/tachyons/src/tachyons.css', 'utf8');
+    fs.writeFileSync('tachyons.less', toLess(main));
  });
-
